@@ -1,0 +1,139 @@
+.error {
+    min-height: 100vh;
+    width: 100%;
+    background: radial-gradient(circle at top, #1f2a44 0%, #0b0f1a 60%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    overflow: hidden;
+    position: relative;
+    font-family: 'Trebuchet MS', sans-serif;
+    color: #f4f4f4;
+    text-align: center;
+}
+
+/* Fondo tipo portal */
+.error::before {
+    content: "";
+    position: absolute;
+    width: 450px;
+    height: 450px;
+    border-radius: 50%;
+    background:
+        radial-gradient(circle,
+            rgba(95, 255, 180, 0.9) 0%,
+            rgba(39, 205, 120, 0.7) 25%,
+            rgba(0, 255, 170, 0.15) 55%,
+            transparent 75%);
+    filter: blur(8px);
+    animation: portalSpin 10s linear infinite;
+    z-index: 0;
+}
+
+.error::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image:
+        radial-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+    background-size: 30px 30px;
+    opacity: 0.3;
+    z-index: 0;
+}
+
+.titleError {
+    font-size: 7rem;
+    font-weight: 900;
+    letter-spacing: 8px;
+    color: #9eff00;
+    text-shadow:
+        0 0 10px #9eff00,
+        0 0 25px #4cff00,
+        0 0 45px #00ff99;
+    z-index: 2;
+    margin: 0;
+    animation: glitch 2s infinite;
+}
+
+.error p {
+    z-index: 2;
+    margin: 0;
+}
+
+.error p:nth-child(2) {
+    font-size: 2rem;
+    color: #ffffff;
+    font-weight: bold;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+.error p:nth-child(3) {
+    font-size: 1.2rem;
+    padding: 0.8rem 1.5rem;
+    border: 2px solid rgba(158, 255, 0, 0.4);
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(6px);
+    color: #d9ffe3;
+}
+
+/* Animaciones */
+
+@keyframes portalSpin {
+    0% {
+        transform: rotate(0deg) scale(1);
+    }
+
+    50% {
+        transform: rotate(180deg) scale(1.08);
+    }
+
+    100% {
+        transform: rotate(360deg) scale(1);
+    }
+}
+
+@keyframes glitch {
+    0% {
+        transform: translate(0);
+    }
+
+    20% {
+        transform: translate(-2px, 2px);
+    }
+
+    40% {
+        transform: translate(2px, -2px);
+    }
+
+    60% {
+        transform: translate(-1px, 1px);
+    }
+
+    80% {
+        transform: translate(1px, -1px);
+    }
+
+    100% {
+        transform: translate(0);
+    }
+}
+
+/* Responsive */
+
+@media (max-width: 768px) {
+    .titleError {
+        font-size: 4rem;
+    }
+
+    .error p:nth-child(2) {
+        font-size: 1.4rem;
+    }
+
+    .error p:nth-child(3) {
+        font-size: 1rem;
+        width: 85%;
+    }
+}

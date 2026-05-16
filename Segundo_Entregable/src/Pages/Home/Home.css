@@ -1,0 +1,293 @@
+.home {
+    min-height: 100vh;
+
+    position: relative;
+    overflow: hidden;
+
+    padding: 4rem 2rem;
+
+    background:
+        radial-gradient(circle at top,
+            #18233f 0%,
+            #0b0f1a 65%);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Fondo espacial */
+
+.home::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+
+    background-image:
+        radial-gradient(rgba(255, 255, 255, 0.7) 1px, transparent 1px);
+
+    background-size: 35px 35px;
+
+    opacity: 0.12;
+}
+
+
+
+/* Hero */
+
+.hero {
+    position: relative;
+    z-index: 2;
+
+    width: 100%;
+    max-width: 1300px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 4rem;
+}
+
+/* Texto */
+
+.heroText {
+    flex: 1;
+    max-width: 650px;
+}
+
+.tag {
+    display: inline-block;
+
+    padding: 0.5rem 1rem;
+
+    margin-bottom: 1.5rem;
+
+    border-radius: 999px;
+
+    background:
+        rgba(126, 255, 120, 0.12);
+
+    border:
+        1px solid rgba(126, 255, 120, 0.3);
+
+    color: #b7ff00;
+
+    font-size: 0.9rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+
+    box-shadow:
+        0 0 15px rgba(126, 255, 120, 0.15);
+}
+
+.heroText h1 {
+    margin: 0;
+
+    font-size: 4.5rem;
+    line-height: 1.1;
+
+    color: #ffffff;
+
+    text-shadow:
+        0 0 15px rgba(255, 255, 255, 0.15);
+}
+
+.heroText h1 span {
+    color: #b7ff00;
+
+    text-shadow:
+        0 0 10px #7dff00,
+        0 0 25px #00ffae;
+}
+
+.heroText p {
+    margin-top: 1.8rem;
+
+    font-size: 1.2rem;
+    line-height: 1.8;
+
+    color: #d7dce7;
+}
+
+/* Botones */
+
+.heroButtons {
+    display: flex;
+    gap: 1.2rem;
+
+    margin-top: 2rem;
+}
+
+.primaryBtn,
+.secondaryBtn {
+    text-decoration: none;
+
+    padding: 1rem 1.8rem;
+
+    border-radius: 14px;
+
+    font-weight: 700;
+    letter-spacing: 1px;
+
+    transition: 0.3s ease;
+}
+
+.primaryBtn {
+    background:
+        linear-gradient(135deg,
+            #b7ff00,
+            #00ffae);
+
+    color: #09111f;
+
+    box-shadow:
+        0 0 20px rgba(126, 255, 120, 0.35);
+}
+
+.primaryBtn:hover {
+    transform: translateY(-4px) scale(1.03);
+}
+
+.secondaryBtn {
+    border:
+        2px solid rgba(126, 255, 120, 0.25);
+
+    color: #dfffe8;
+
+    background:
+        rgba(255, 255, 255, 0.04);
+}
+
+.secondaryBtn:hover {
+    background:
+        rgba(126, 255, 120, 0.08);
+
+    box-shadow:
+        0 0 15px rgba(126, 255, 120, 0.2);
+}
+
+/* Card */
+
+.heroCard {
+    position: relative;
+
+    width: 340px;
+
+    border-radius: 28px;
+
+    overflow: hidden;
+
+    background:
+        rgba(255, 255, 255, 0.05);
+
+    border:
+        1px solid rgba(255, 255, 255, 0.08);
+
+    backdrop-filter: blur(10px);
+
+    box-shadow:
+        0 0 30px rgba(0, 0, 0, 0.35);
+
+}
+
+.cardGlow {
+    position: absolute;
+    inset: 0;
+
+    background:
+        linear-gradient(180deg,
+            rgba(126, 255, 120, 0.15),
+            transparent);
+
+    pointer-events: none;
+}
+
+.heroCard img {
+    width: 100%;
+    height: 320px;
+
+    object-fit: cover;
+}
+
+.cardInfo {
+    padding: 1.5rem;
+}
+
+.cardInfo h2 {
+    margin: 0;
+
+    color: #ffffff;
+
+    font-size: 2rem;
+}
+
+.cardInfo p {
+    margin-top: 1rem;
+
+    line-height: 1.6;
+
+    color: #d8dce8;
+}
+
+.status {
+    margin-top: 1.2rem;
+
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+
+    color: #b7ff00;
+    font-weight: 700;
+}
+
+.status span {
+    width: 12px;
+    height: 12px;
+
+    border-radius: 50%;
+
+    background: #7dff00;
+
+    box-shadow:
+        0 0 10px #7dff00;
+}
+
+/* Responsive */
+
+@media (max-width: 980px) {
+
+    .hero {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .heroButtons {
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .heroText h1 {
+        font-size: 3rem;
+    }
+}
+
+@media (max-width: 600px) {
+
+    .home {
+        padding: 2rem 1rem;
+    }
+
+    .heroText h1 {
+        font-size: 2.3rem;
+    }
+
+    .heroText p {
+        font-size: 1rem;
+    }
+
+    .heroCard {
+        width: 100%;
+        max-width: 320px;
+    }
+
+}
