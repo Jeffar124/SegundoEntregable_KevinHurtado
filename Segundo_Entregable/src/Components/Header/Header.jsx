@@ -5,7 +5,7 @@ const Header = () => {
   return (
     <header className='header'>
       <div className='headerContent'>
-        <h1>Rick and Morty</h1>
+        <h1><span className='RickTitle'>Rick</span> <span className='AndTitle'>and</span> <span className='MortyTitle'>Morty</span></h1>
         <h2>La Serie de Animación</h2>
       </div>
     </header>

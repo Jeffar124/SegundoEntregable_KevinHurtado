@@ -48,15 +48,27 @@
     font-size: 5rem;
     font-weight: 900;
     letter-spacing: 4px;
+}
 
-    color: #b7ff00;
-
+.RickTitle {
+    color: #A9D3E9;
     text-shadow:
-        0 0 10px #b7ff00,
-        0 0 20px #7dff00,
-        0 0 40px #00ffae;
+        0 0 10px #00ffd5,
+        0 0 25px #00f2ff;
+}
 
-    animation: floating 3s ease-in-out infinite;
+.AndTitle {
+    color: #b7ff00;
+    text-shadow:
+        0 0 10px #7dff00,
+        0 0 25px #00ffae;
+}
+
+.MortyTitle {
+    color: #FBF976;
+    text-shadow:
+        0 0 10px #f6f609,
+        0 0 25px #d1f311;
 }
 
 .header h2 {

@@ -25,7 +25,7 @@ const CharacterDetails = ({
                 <img
                     src={image}
                     alt={name}
-                    className="character-image"
+                    className="character-image-detail"
                 />
             </div>
 

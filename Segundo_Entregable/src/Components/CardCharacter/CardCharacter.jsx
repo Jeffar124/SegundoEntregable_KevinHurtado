@@ -2,8 +2,18 @@ import React from "react";
 import './CardCharacter.css'
 
 const CharacterCard = (props) => {
+  const getCharacterClass = () => {
+    if (props.name.includes("Rick")) return "rick";
+    if (props.name.includes("Morty")) return "morty";
+    if (props.name.includes("Summer")) return "summer";
+    if (props.name.includes("Beth")) return "beth";
+    if (props.name.includes("Jerry")) return "jerry";
+
+    return "default";
+  };
   return (
-    <div className="character-card">
+
+    <div className={`character-card ${getCharacterClass()}`}>
       <img
         src={props.image}
         alt={props.name}
