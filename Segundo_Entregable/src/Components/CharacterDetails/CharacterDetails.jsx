@@ -1,78 +1,75 @@
 import React from 'react'
 import './CharacterDetails.css'
 
-const CharacterDetails = ({
-    name,
-    image,
-    id,
-    status,
-    species,
-    type,
-    origin,
-    location,
-    episode,
-    created
-}) => {
+const CharacterDetails = (props) => {
 
+    const getCharacterClass = () => {
+        if (props.name.includes("Rick")) return "rick";
+        if (props.name.includes("Morty")) return "morty";
+        if (props.name.includes("Summer")) return "summer";
+        if (props.name.includes("Beth")) return "beth";
+        if (props.name.includes("Jerry")) return "jerry";
+
+        return "default";
+    };
     const formatDate = (date) => {
         return new Date(date).toLocaleDateString()
     }
 
     return (
-        <div className="character-detail-card">
+        <div className={`character-detail-card ${getCharacterClass()}`}>
 
             <div className="character-image-container">
                 <img
-                    src={image}
-                    alt={name}
+                    src={props.image}
+                    alt={props.name}
                     className="character-image-detail"
                 />
             </div>
 
             <div className="character-info">
 
-                <h1>{name}</h1>
 
                 <div className="info-grid">
 
                     <div className="info-item">
                         <span className="label">ID:</span>
-                        <span>{id}</span>
+                        <span className="attributes">{props.id}</span>
                     </div>
 
                     <div className="info-item">
                         <span className="label">Estado:</span>
-                        <span>{status}</span>
+                        <span className="attributes">{props.status}</span>
                     </div>
 
                     <div className="info-item">
                         <span className="label">Especie:</span>
-                        <span>{species}</span>
+                        <span className="attributes">{props.species}</span>
                     </div>
 
                     <div className="info-item">
                         <span className="label">Tipo:</span>
-                        <span>{type || 'Desconocido'}</span>
+                        <span className="attributes">{props.type || 'Desconocido'}</span>
                     </div>
 
                     <div className="info-item">
                         <span className="label">Origen:</span>
-                        <span>{origin}</span>
+                        <span className="attributes">{props.origin}</span>
                     </div>
 
                     <div className="info-item">
                         <span className="label">Ubicación:</span>
-                        <span>{location}</span>
+                        <span className="attributes">{props.location}</span>
                     </div>
 
                     <div className="info-item">
                         <span className="label">Episodios:</span>
-                        <span>{episode}</span>
+                        <span className="attributes">{props.episode}</span>
                     </div>
 
                     <div className="info-item">
                         <span className="label">Creado:</span>
-                        <span>{formatDate(created)}</span>
+                        <span className="attributes">{formatDate(props.created)}</span>
                     </div>
 
                 </div>

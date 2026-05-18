@@ -1,68 +1,56 @@
-import { useState, useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import CardCharacter from '../../Components/CardCharacter/CardCharacter';
 import './Characters.css'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate, useSearchParams } from 'react-router-dom';
 
 const Characters = () => {
-    const [searchQuery, setSearchQuery] = useState('');
-    const [speciesFilter, setSpeciesFilter] = useState('');
-    const [url, setUrl] = useState('https://rickandmortyapi.com/api/character');
+    const [searchParams] = useSearchParams();
+    const navigate = useNavigate();
+
     const [characters, setCharacters] = useState([]);
-    const [next, setNext] = useState(null);
-    const [prev, setPrev] = useState(null);
     const [totalPages, setTotalPages] = useState(1);
-    const [currentPage, setCurrentPage] = useState(1);
+
+    const currentPage = parseInt(searchParams.get('page') || '1');
+    const searchQuery = searchParams.get('name') || '';
+    const speciesFilter = searchParams.get('species') || '';
 
     useEffect(() => {
-        let baseUrl = 'https://rickandmortyapi.com/api/character/';
         const params = new URLSearchParams();
         if (searchQuery) params.append('name', searchQuery);
         if (speciesFilter) params.append('species', speciesFilter);
+        params.append('page', currentPage);
 
-        const queryString = params.toString();
-        const newUrl = queryString ? `${baseUrl}?${queryString}` : baseUrl;
-        setUrl(newUrl);
-    }, [searchQuery, speciesFilter])
-
-    useEffect(() => {
-        fetch(url)
+        fetch(`https://rickandmortyapi.com/api/character/?${params.toString()}`)
             .then(res => res.json())
             .then(data => {
                 if (data.results) {
-                    setCharacters(data.results)
-                    setNext(data.info.next)
-                    setPrev(data.info.prev)
-                    setTotalPages(data.info.pages)
-                    
-                    const urlObj = new URL(url);
-                    const page = urlObj.searchParams.get('page');
-                    setCurrentPage(page ? parseInt(page) : 1);
+                    setCharacters(data.results);
+                    setTotalPages(data.info.pages);
                 } else {
-                    setCharacters([])
-                    setNext(null)
-                    setPrev(null)
-                    setTotalPages(1)
-                    setCurrentPage(1)
+                    setCharacters([]);
+                    setTotalPages(1);
                 }
             })
-            .catch(err => console.error(err))
-    }, [url])
+            .catch(err => console.error(err));
+    }, [searchParams]);
 
-    const handlePrev = () => {
-        setUrl(prev)
-        window.scrollTo({
-            top: 0,
-            behavior: "smooth",
-        })
-    }
+    const applyFilter = (key, value) => {
+        const params = new URLSearchParams(searchParams);
+        if (value) params.set(key, value);
+        else params.delete(key);
+        params.set('page', '1');
+        navigate(`/characters?${params.toString()}`);
+    };
 
-    const handleNext = () => {
-        setUrl(next)
-        window.scrollTo({
-            top: 0,
-            behavior: "smooth",
-        })
-    }
+    const goToPage = (page) => {
+        const params = new URLSearchParams(searchParams);
+        params.set('page', page);
+        navigate(`/characters?${params.toString()}`);
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    };
+
+    const handlePrev = () => goToPage(currentPage - 1);
+    const handleNext = () => goToPage(currentPage + 1);
 
     const speciesOptions = [
         { value: '', label: 'Todas las Especies' },
@@ -90,7 +78,7 @@ const Characters = () => {
                                     name="species"
                                     value={option.value}
                                     checked={speciesFilter === option.value}
-                                    onChange={(e) => setSpeciesFilter(e.target.value)}
+                                    onChange={(e) => applyFilter('species', e.target.value)}
                                 />
                                 <span className="radio-custom"></span>
                                 {option.label}
@@ -105,7 +93,7 @@ const Characters = () => {
                             type="text"
                             placeholder="Buscar personaje por nombre..."
                             value={searchQuery}
-                            onChange={(e) => setSearchQuery(e.target.value)}
+                            onChange={(e) => applyFilter('name', e.target.value)}
                             className="search-input"
                         />
                     </div>
@@ -129,9 +117,9 @@ const Characters = () => {
                     </div>
 
                     <div className="pagination">
-                        <button disabled={!prev} onClick={handlePrev}>Anterior</button>
+                        <button disabled={currentPage <= 1} onClick={handlePrev}>Anterior</button>
                         <span className="page-info">Página {currentPage} de {totalPages}</span>
-                        <button disabled={!next} onClick={handleNext}>Siguiente</button>
+                        <button disabled={currentPage >= totalPages} onClick={handleNext}>Siguiente</button>
                     </div>
                 </div>
             </div>

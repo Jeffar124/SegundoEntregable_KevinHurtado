@@ -60,15 +60,49 @@
     text-align: center;
 
     text-shadow:
-        0 0 15px rgba(255, 255, 255, 0.15);
+        0 0 20px rgba(255, 255, 255, 0.15);
+}
+
+.detailsTitle span.rick {
+    color: #A9D3E9;
+    text-shadow:
+        0 0 10px #00ffd5,
+        0 0 25px #00f2ff;
+}
+
+.detailsTitle span.morty {
+    color: #FBF976;
+    text-shadow:
+        0 0 10px #f6f609,
+        0 0 25px #d1f311;
+}
+
+.detailsTitle span.summer {
+    color: #ff66cc;
+    text-shadow:
+        0 0 10px #ff00cc,
+        0 0 25px #ff66e9;
+}
+
+.detailsTitle span.beth {
+    color: #ff914d;
+    text-shadow:
+        0 0 10px #ff914d,
+        0 0 25px #ff914d;
+}
+
+.detailsTitle span.jerry {
+    color: #97ce4c;
+    text-shadow:
+        0 0 10px #97ce4c,
+        0 0 25px #97ce4c;
 }
 
 .detailsTitle span {
-    color: #b7ff00;
-
+    color: #c8b8d8;
     text-shadow:
-        0 0 10px #97ce4c,
-        0 0 20px #00ffae;
+        0 0 8px #c8b8d8,
+        0 0 18px #a88bbe;
 }
 
 /* Loading */

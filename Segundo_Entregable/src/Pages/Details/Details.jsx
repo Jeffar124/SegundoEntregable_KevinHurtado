@@ -15,7 +15,19 @@ const Details = () => {
         fetch(`https://rickandmortyapi.com/api/character/${id}`)
             .then(res => res.json())
             .then(data => setCharacter(data))
-    }, [])
+    }, [id])
+
+    const getCharacterClass = () => {
+        const name = character?.name || "";
+
+        if (name.includes("Rick")) return "rick";
+        if (name.includes("Morty")) return "morty";
+        if (name.includes("Summer")) return "summer";
+        if (name.includes("Beth")) return "beth";
+        if (name.includes("Jerry")) return "jerry";
+
+        return "default";
+    };
 
     return (
         <div className='detailsPage'>
@@ -23,7 +35,7 @@ const Details = () => {
             <div className='detailsContainer'>
 
                 <h1 className='detailsTitle'>
-                    Detalles de <span>{character?.name}</span>
+                    Detalles de <span className={getCharacterClass()}>{character?.name}</span>
                 </h1>
 
                 {character ? (
