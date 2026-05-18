@@ -14,23 +14,6 @@
     text-align: center;
 }
 
-/* Fondo tipo portal */
-.error::before {
-    content: "";
-    position: absolute;
-    width: 450px;
-    height: 450px;
-    border-radius: 50%;
-    background:
-        radial-gradient(circle,
-            rgba(95, 255, 180, 0.9) 0%,
-            rgba(39, 205, 120, 0.7) 25%,
-            rgba(0, 255, 170, 0.15) 55%,
-            transparent 75%);
-    filter: blur(8px);
-    animation: portalSpin 10s linear infinite;
-    z-index: 0;
-}
 
 .error::after {
     content: "";
@@ -79,49 +62,6 @@
     color: #d9ffe3;
 }
 
-/* Animaciones */
-
-@keyframes portalSpin {
-    0% {
-        transform: rotate(0deg) scale(1);
-    }
-
-    50% {
-        transform: rotate(180deg) scale(1.08);
-    }
-
-    100% {
-        transform: rotate(360deg) scale(1);
-    }
-}
-
-@keyframes glitch {
-    0% {
-        transform: translate(0);
-    }
-
-    20% {
-        transform: translate(-2px, 2px);
-    }
-
-    40% {
-        transform: translate(2px, -2px);
-    }
-
-    60% {
-        transform: translate(-1px, 1px);
-    }
-
-    80% {
-        transform: translate(1px, -1px);
-    }
-
-    100% {
-        transform: translate(0);
-    }
-}
-
-/* Responsive */
 
 @media (max-width: 768px) {
     .titleError {

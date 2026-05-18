@@ -1,78 +1,40 @@
 import React from 'react'
-import './Home.css'
-import { Link } from 'react-router-dom'
+import { useState, useEffect } from "react";
+import CardCharacter from '../../Components/CardCharacter/CardCharacter';
+import "./Home.css";
+import { Link } from 'react-router-dom';
 
 const Home = () => {
+  const [characters, setCharacters] = useState([]);
+
+  useEffect(() => {
+    const ids = [];
+    for (let i = 0; i < 6; i++) {
+      const randomId = Math.floor(Math.random() * 826) + 1;
+      ids.push(randomId);
+    }
+
+    fetch(`https://rickandmortyapi.com/api/character/${ids.join(",")}`)
+      .then((response) => response.json())
+      .then((data) => {
+        setCharacters(data);
+      });
+  }, []);
+
   return (
-    <main className='home'>
-
-
-      <section className='hero'>
-
-        <div className='heroText'>
-
-          <span className='tag'>
-            DIMENSION C-137
-          </span>
-
-          <h1>
-            Explore el Multiverso de
-            <span> Rick and Morty</span>
-          </h1>
-
-          <p>
-            Descubre personajes, especies,
-            dimensiones y aventuras usando
-            la API oficial de Rick and Morty.
-          </p>
-
-          <div className='heroButtons'>
-
-            <Link to='/characters' className='primaryBtn'>
-              Ver Personajes
-            </Link>
-
-            <a
-              href='https://rickandmortyapi.com/'
-              target='_blank'
-              rel='noreferrer'
-              className='secondaryBtn'
-            >
-              API Oficial
-            </a>
-
-          </div>
-
-        </div>
-
-        <div className='heroCard'>
-
-          <div className='cardGlow'></div>
-
-          <img
-            src='https://rickandmortyapi.com/api/character/avatar/1.jpeg'
-            alt='Rick Sanchez'
+    <div className="home-grid">
+      {characters.map((character) => (
+        <Link to={`/characters/${character.id}`} key={character.id}>
+          <CardCharacter
+            name={character.name}
+            gender={character.gender}
+            species={character.species}
+            image={character.image}
+            status={character.status}
           />
-
-          <div className='cardInfo'>
-            <h2>Rick Sanchez</h2>
-
-            <p>
-              Científico, genio, alcohólico y
-              el ser más peligroso del multiverso.
-            </p>
-
-            <div className='status'>
-              <span></span>
-              Alive
-            </div>
-          </div>
-
-        </div>
-
-      </section>
-
-    </main>
+        </Link>
+      ))}
+    </div>
   )
 }
 

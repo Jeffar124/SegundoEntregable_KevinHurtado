@@ -30,7 +30,7 @@ const Nav = () => {
               : 'navLink'
           }
         >
-          <li>Characters</li>
+          <li>Personajes</li>
         </Link>
 
       </ul>
