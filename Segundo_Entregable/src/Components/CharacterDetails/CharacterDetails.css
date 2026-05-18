@@ -38,13 +38,6 @@
         0 0 18px rgba(151, 206, 76, 0.15);
 }
 
-.character-detail-card.rick:hover {
-    border-color: rgba(102, 204, 255, 0.7);
-
-    box-shadow:
-        0 12px 35px rgba(0, 0, 0, 0.45),
-        0 0 25px rgba(102, 204, 255, 0.3);
-}
 
 /* Morty */
 
@@ -54,49 +47,25 @@
     border-color: rgba(255, 230, 0, 0.35);
 }
 
-.character-detail-card.morty:hover {
-    border-color: rgba(255, 230, 0, 0.7);
-
-    box-shadow:
-        0 12px 35px rgba(0, 0, 0, 0.45),
-        0 0 25px rgba(255, 230, 0, 0.25);
-}
 
 /* Summer */
 
 .character-detail-card.summer {
-    /* background: rgba(255, 102, 204, 0.35); */
     background: rgba(60, 18, 45, 0.95);
 
     border-color: rgba(255, 102, 204, 0.35);
 }
 
-.character-detail-card.summer:hover {
-    border-color: rgba(255, 102, 204, 0.7);
 
-    box-shadow:
-        0 12px 35px rgba(0, 0, 0, 0.45),
-        0 0 25px rgba(255, 102, 204, 0.3);
-}
 
 /* Beth */
 
 .character-detail-card.beth {
-    background:
-        linear-gradient(145deg,
-            rgba(70, 35, 12, 0.95),
-            rgba(35, 18, 8, 0.95));
+    background: rgba(70, 35, 12, 0.95);
 
     border-color: rgba(255, 145, 77, 0.35);
 }
 
-.character-detail-card.beth:hover {
-    border-color: rgba(255, 145, 77, 0.7);
-
-    box-shadow:
-        0 12px 35px rgba(0, 0, 0, 0.45),
-        0 0 25px rgba(255, 145, 77, 0.3);
-}
 
 /* Jerry */
 
@@ -104,14 +73,6 @@
     background: rgba(25, 35, 28, 0.95);
 
     border-color: rgba(151, 206, 76, 0.35);
-}
-
-.character-detail-card.jerry:hover {
-    border-color: rgba(151, 206, 76, 0.7);
-
-    box-shadow:
-        0 12px 35px rgba(0, 0, 0, 0.45),
-        0 0 25px rgba(151, 206, 76, 0.35);
 }
 
 /* Imagen */
@@ -129,12 +90,6 @@
     object-fit: cover;
 
     border-radius: 24px;
-
-    border:
-        3px solid rgba(151, 206, 76, 0.25);
-
-    box-shadow:
-        0 0 25px rgba(151, 206, 76, 0.12);
 
     transition: transform 0.3s ease;
 }
